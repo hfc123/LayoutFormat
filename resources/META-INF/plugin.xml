@@ -1,0 +1,39 @@
+<idea-plugin>
+  <id>com.hfc123.android.HFCXmlFormat</id>
+  <name>HFCXmlFormat</name>
+  <version>1.0.0</version>
+  <vendor email="284424243@qq.com" url="https://github.com/hfc123/LayoutFormat">hfc123</vendor>
+
+
+  <description><![CDATA[
+      this xml is format your layout by repalce  your text and dimens
+      it will creat new string values in values/strings.xml  and  dimen values in values/dimens.xml
+    ]]></description>
+
+  <change-notes><![CDATA[
+      v1.0.0 0000000000000000000000000000000000000000000000000000000000000000000
+    ]]>
+  </change-notes>
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+  <idea-version since-build="173.0"/>
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+       on how to target different products -->
+  <!-- uncomment to enable plugin in all products
+  <depends>com.intellij.modules.lang</depends>
+  -->
+
+  <extensions defaultExtensionNs="com.intellij">
+    <!-- Add your extensions here -->
+  </extensions>
+
+  <actions>
+    <!-- Add your actions here -->
+    <action id="plugin.xmlformat" class="com.hfc.xmlformat.XmlFormat" text="XmlFormat" description="layout文件格式化内容">
+      <add-to-group group-id="EditMenu" anchor="last"/>
+      <keyboard-shortcut keymap="$default" first-keystroke="ctrl NUMPAD1"/>
+    </action>
+  </actions>
+
+</idea-plugin>

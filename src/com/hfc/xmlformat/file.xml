@@ -1,0 +1,13 @@
+<Phones>
+    　　<Brand name="三星">
+    　　　　<Type name="note4">note4</Type>
+    　　　　<Type name="note5">note5</Type>
+    　　</Brand>
+
+
+    　　<Brand name="苹果">
+    　　　　  <Type name="iphone7">iphone7</Type>
+    　　　　  <Type name="iphone8">iphone8</Type>
+    　　      <Type name="iphone9">iphone9</Type>
+    　　</Brand>
+    </Phones>

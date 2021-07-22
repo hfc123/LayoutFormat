@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_hfcxmlformat" default="compile.module.hfcxmlformat">
+  <dirname property="module.hfcxmlformat.basedir" file="${ant.file.module_hfcxmlformat}"/>
+  
+  <property name="module.jdk.home.hfcxmlformat" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.hfcxmlformat" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.hfcxmlformat" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.hfcxmlformat" value="-encoding UTF-8 -source 8 -target 8 ${compiler.args}"/>
+  
+  <property name="hfcxmlformat.output.dir" value="${module.hfcxmlformat.basedir}/out/production/HFCXmlFormat"/>
+  <property name="hfcxmlformat.testoutput.dir" value="${module.hfcxmlformat.basedir}/out/test/HFCXmlFormat"/>
+  
+  <path id="hfcxmlformat.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="hfcxmlformat.module.production.classpath">
+    <path refid="${module.jdk.classpath.hfcxmlformat}"/>
+  </path>
+  
+  <path id="hfcxmlformat.runtime.production.module.classpath">
+    <pathelement location="${hfcxmlformat.output.dir}"/>
+  </path>
+  
+  <path id="hfcxmlformat.module.classpath">
+    <path refid="${module.jdk.classpath.hfcxmlformat}"/>
+    <pathelement location="${hfcxmlformat.output.dir}"/>
+  </path>
+  
+  <path id="hfcxmlformat.runtime.module.classpath">
+    <pathelement location="${hfcxmlformat.testoutput.dir}"/>
+    <pathelement location="${hfcxmlformat.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.hfcxmlformat">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.hfcxmlformat">
+    <patternset refid="excluded.from.module.hfcxmlformat"/>
+  </patternset>
+  
+  <path id="hfcxmlformat.module.sourcepath">
+    <dirset dir="${module.hfcxmlformat.basedir}">
+      <include name="src"/>
+      <include name="resources"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.hfcxmlformat" depends="compile.module.hfcxmlformat.production,compile.module.hfcxmlformat.tests" description="Compile module HFCXmlFormat"/>
+  
+  <target name="compile.module.hfcxmlformat.production" depends="register.custom.compilers" description="Compile module HFCXmlFormat; production classes">
+    <mkdir dir="${hfcxmlformat.output.dir}"/>
+    <javac2 destdir="${hfcxmlformat.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.hfcxmlformat}/javac">
+      <compilerarg line="${compiler.args.hfcxmlformat}"/>
+      <bootclasspath refid="hfcxmlformat.module.bootclasspath"/>
+      <classpath refid="hfcxmlformat.module.production.classpath"/>
+      <src refid="hfcxmlformat.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.hfcxmlformat"/>
+    </javac2>
+    
+    <copy todir="${hfcxmlformat.output.dir}">
+      <fileset dir="${module.hfcxmlformat.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.hfcxmlformat.basedir}/resources">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.hfcxmlformat.tests" depends="register.custom.compilers,compile.module.hfcxmlformat.production" description="compile module HFCXmlFormat; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.hfcxmlformat" description="cleanup module">
+    <delete dir="${hfcxmlformat.output.dir}"/>
+    <delete dir="${hfcxmlformat.testoutput.dir}"/>
+  </target>
+  
+  <property name="hfcxmlformat.plugin.path.jar" value="${module.hfcxmlformat.basedir}/HFCXmlFormat.jar"/>
+  
+  <!-- Build archive for plugin 'HFCXmlFormat' -->
+  <target name="plugin.build.jar.hfcxmlformat" depends="compile.module.hfcxmlformat" description="Build plugin archive for module &#39;HFCXmlFormat&#39;">
+    <jar destfile="${hfcxmlformat.plugin.path.jar}" duplicate="preserve">
+      <zipfileset dir="${module.hfcxmlformat.basedir}/out/production/HFCXmlFormat"/>
+      <zipfileset file="${module.hfcxmlformat.basedir}/resources/META-INF/plugin.xml" prefix="META-INF"/>
+      <manifest>
+        <attribute name="Created-By" value="IntelliJ IDEA"/>
+        <attribute name="Manifest-Version" value="1.0"/>
+      </manifest>
+    </jar>
+  </target>
+</project>

@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    xmlns:parkingall="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/back_details_title"
+        layout="@layout/include_title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/back_details_title">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/view_has_backs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginBottom="50dp"
+                android:background="@drawable/layerlist_stop_one"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginLeft="@dimen/parking_back_one_lr"
+                    android:layout_marginRight="@dimen/parking_back_one_lr"
+                    android:layout_marginTop="22dp">
+
+                    <TextView
+                        android:id="@+id/backde_place"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="区域-路段名-泊位号"
+                        android:textColor="@color/black3"
+                        android:textSize="@dimen/texts_middle" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:id="@+id/recharge_line1"
+                    style="@style/park_line_style_match"
+                    android:visibility="visible" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RelativeLayout style="@style/parking_back_one_item_style">
+
+                        <TextView
+                            android:id="@+id/tx_back_num_tips"
+                            style="@style/parking_back_one_item_tx_tips_style"
+                            android:text="欠费单号" />
+
+                        <TextView
+                            android:id="@+id/backde_code"
+                            style="@style/parking_back_one_item_tx_content_style"
+                            android:layout_below="@id/tx_back_num_tips"
+                            android:text="" />
+                    </RelativeLayout>
+
+                    <RelativeLayout style="@style/parking_back_one_item_style">
+
+                        <TextView
+                            android:id="@+id/tx_back_count_time_tips"
+                            style="@style/parking_back_one_item_tx_tips_style"
+                            android:text="计费时间" />
+
+                        <TextView
+                            android:id="@+id/backde_time"
+                            style="@style/parking_back_one_item_tx_content_style"
+                            android:layout_below="@id/tx_back_count_time_tips" />
+                    </RelativeLayout>
+
+                    <RelativeLayout style="@style/parking_back_one_item_style">
+
+                        <TextView
+                            android:id="@+id/tx_pay_time_duration_tips"
+                            style="@style/parking_back_one_item_tx_tips_style"
+                            android:text="购买时长" />
+
+                        <TextView
+                            android:id="@+id/backdetail_stop"
+                            style="@style/parking_back_one_item_tx_content_style"
+                            android:layout_below="@id/tx_pay_time_duration_tips" />
+                    </RelativeLayout>
+
+                    <RelativeLayout style="@style/parking_back_one_item_style">
+
+                        <TextView
+                            android:id="@+id/tx_back_over_duration_tips"
+                            style="@style/parking_back_one_item_tx_tips_style"
+                            android:text="超时时长" />
+
+                        <TextView
+                            android:id="@+id/backdetail_supe"
+                            style="@style/parking_back_one_item_tx_content_style"
+                            android:layout_below="@id/tx_back_over_duration_tips" />
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/parking_park_record_detail_bg" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="30dp"
+                        android:layout_marginTop="7dp">
+
+                        <TextView
+                            android:visibility="gone"
+                            android:id="@+id/parking_back_need_pay_tips"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:text="补缴金额"
+                            android:textColor="@color/gray3"
+                            android:textSize="@dimen/text_low" />
+
+                        <TextView
+                            android:id="@+id/back_moneytypr"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_below="@id/parking_back_need_pay_tips"
+                            android:layout_marginTop="5dp"
+                            android:text="元"
+                            android:textColor="@color/black3"
+                            android:textSize="@dimen/texts_content" />
+
+                        <TextView
+                            android:id="@+id/backde_price"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/parking_back_need_pay_tips"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_toLeftOf="@+id/back_moneytypr"
+                            android:textColor="@color/black3"
+                            android:text="0.00"
+                            android:textSize="@dimen/texts_content" />
+
+                        <com.ecaray.epark.view.LineTextView
+                            android:layout_marginTop="9dp"
+                            android:layout_below="@id/back_moneytypr"
+                            android:layout_alignParentRight="true"
+                            android:id="@+id/txline_discount_tips"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/gray_smaller"
+                            android:text="原价30.00"
+                            android:textSize="@dimen/texts_little"
+                            />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="20dp"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:id="@+id/backde_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="20dp"
+                            android:drawablePadding="5dp"
+                            android:text="查看补缴规则"
+                            android:textColor="@color/text_color_green_deep"
+                            android:textSize="@dimen/text_low"
+                            android:visibility="gone" />
+                    </RelativeLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <com.ecaray.epark.view.ListNoDataView
+                android:id="@+id/view_no_backs"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone"
+                parkingall:content="真棒，没有欠费订单哦！"
+                parkingall:content_desc=""
+                parkingall:img="@drawable/parking_back_record_ic_no"
+                />
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        style="@style/pub_btn_submit_style"
+        android:visibility="gone"
+        android:id="@+id/backde_btn"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="7dp"
+        android:layout_marginLeft="15dip"
+        android:layout_marginRight="15dip"
+        android:layout_marginTop="20dp"
+        android:minHeight="@dimen/button_height"
+        android:padding="10dip"
+        android:text="立即补缴"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_middle" />
+</RelativeLayout>
